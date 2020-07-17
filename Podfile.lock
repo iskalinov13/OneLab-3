@@ -1,0 +1,35 @@
+PODS:
+  - Alamofire (5.2.1)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - NVActivityIndicatorView (5.0.0):
+    - NVActivityIndicatorView/Base (= 5.0.0)
+  - NVActivityIndicatorView/Base (5.0.0)
+  - SnapKit (5.0.1)
+  - UICircularProgressRing (7.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - NVActivityIndicatorView
+  - SnapKit (~> 5.0.0)
+  - UICircularProgressRing
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - NVActivityIndicatorView
+    - SnapKit
+    - UICircularProgressRing
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  NVActivityIndicatorView: f109ed069924ac1b4adbc1ae9cfaeac0be1d6c2c
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
+
+PODFILE CHECKSUM: 78d22221f2ba2a2008ad4ce84dbe497ff7886bbb
+
+COCOAPODS: 1.9.3
