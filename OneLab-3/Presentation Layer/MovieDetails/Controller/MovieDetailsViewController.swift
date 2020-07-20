@@ -54,14 +54,13 @@ class MovieDetailsViewController: UIViewController {
         return label
     }()
     
-    private let movieOverviewLabel: UITextView  =  {
-        let label = UITextView()
+    private let movieOverviewLabel: UILabel  =  {
+        let label = UILabel()
         label.textColor = .white
         label.backgroundColor = #colorLiteral(red: 0.01287723985, green: 0.1454687715, blue: 0.255453229, alpha: 1)
         label.font = .systemFont(ofSize: 16)
         label.textAlignment = .left
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.isEditable = false
+        label.numberOfLines = 0
         return label
     }()
     
@@ -124,7 +123,7 @@ class MovieDetailsViewController: UIViewController {
         view.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
             make.top.equalTo(backDropImageView.snp.bottom).offset(8)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             
         }
         view.addSubview(posterImageView)

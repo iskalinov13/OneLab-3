@@ -30,6 +30,13 @@ class MovieListViewController: UIViewController {
         return tableView
     }()
     
+    private var spinner: NVActivityIndicatorView = {
+        let spinner = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        spinner.type = .ballRotateChase
+        spinner.color = #colorLiteral(red: 0, green: 0.1776865125, blue: 0.456256032, alpha: 1)
+        spinner.padding = 2.0
+        return spinner
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +70,11 @@ class MovieListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.didLoadTableItems = { [weak self] in
             self?.tableView.reloadData()
+        }
+        
+        viewModel.didStopAnimating = { [weak self] in
+            self?.spinner.stopAnimating()
+            self?.tableView.tableFooterView?.isHidden = true
         }
     }
 
@@ -107,20 +119,24 @@ extension MovieListViewController: UITableViewDelegate {
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            let spinner = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: CGFloat(44)), type: .ballRotateChase, color: #colorLiteral(red: 0, green: 0.1776865125, blue: 0.456256032, alpha: 1), padding: 2.0)
-            spinner.startAnimating()
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
-            DispatchQueue.global(qos: .utility).async {
-                self.viewModel.fetchPopularMovies()
-                for _ in 0..<3 {
-                    sleep(1)
-                }
-                DispatchQueue.main.async {
-                    spinner.stopAnimating()
-                    tableView.tableFooterView?.isHidden = true
-                }
+            if !viewModel.isRequestPerforming {
+                spinner.startAnimating()
+                self.tableView.tableFooterView = spinner
+                self.tableView.tableFooterView?.isHidden = false
+                fetchPopularMovies()
             }
+            
+            
+//            DispatchQueue.global(qos: .utility).async {
+//                self.viewModel.fetchPopularMovies()
+//                for _ in 0..<3 {
+//                    sleep(1)
+//                }
+//                DispatchQueue.main.async {
+//                    spinner.stopAnimating()
+//                    tableView.tableFooterView?.isHidden = true
+//                }
+//            }
         }
     }
     

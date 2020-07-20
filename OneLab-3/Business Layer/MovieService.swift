@@ -12,7 +12,7 @@ import UIKit
 
 protocol MovieService {
     
-    func getPopularMovies(page: Int, success: @escaping(Movie, UIImage) -> Void, failure: @escaping(Error) -> Void)
+    func getPopularMovies(page: Int, success: @escaping(Movie, UIImage?) -> Void, failure: @escaping(Error) -> Void)
     func getMovieDetails(movieId: Int, success: @escaping(MovieDetails) -> Void, failure: @escaping(Error) -> Void)
     func getMovieImage(path: String, success: @escaping(UIImage) -> Void, failure: @escaping(Error) -> Void)
 }
@@ -51,7 +51,7 @@ class MovieServiceImplementation: MovieService {
     }
     
     
-    func getPopularMovies(page: Int, success: @escaping(Movie, UIImage) -> Void, failure: @escaping(Error) -> Void) {
+    func getPopularMovies(page: Int, success: @escaping(Movie, UIImage?) -> Void, failure: @escaping(Error) -> Void) {
         
         let urlString = String(format: "%@/movie/popular", Api.baseUrl)
         guard let url = URL(string: urlString) else { return }
@@ -66,11 +66,16 @@ class MovieServiceImplementation: MovieService {
                 let movies = wrapper.results
                 Api.totalPages = wrapper.totalPages
                 movies.forEach {
-                    if let urlImage = URL(string: String(format: "%@%@", Api.imageBaseUrl, $0.posterPath)) {
-                        if let newData = try? Data(contentsOf: urlImage), let image = UIImage(data: newData) {
-                            success($0, image)
+                    if let path =  $0.posterPath {
+                        if let urlImage = URL(string: String(format: "%@%@", Api.imageBaseUrl, path)) {
+                            if let newData = try? Data(contentsOf: urlImage), let image = UIImage(data: newData) {
+                                success($0, image)
+                            }
                         }
+                    } else {
+                        success($0, nil)
                     }
+                    
                 }
             case .failure(let error): failure(error)
             }

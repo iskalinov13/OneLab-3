@@ -11,9 +11,9 @@
 		DC1D295724C00D86003EF45F /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D295624C00D86003EF45F /* ConfigurableCell.swift */; };
 		DC1D295924C00F34003EF45F /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D295824C00F34003EF45F /* CellConfigurator.swift */; };
 		DC1D295B24C01253003EF45F /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D295A24C01253003EF45F /* ImageTableViewCell.swift */; };
-		DC1D295D24C0133D003EF45F /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D295C24C0133D003EF45F /* InfoTableViewCell.swift */; };
 		DC35401924BF25150000ABC7 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC35401824BF25150000ABC7 /* MovieDetailViewModel.swift */; };
 		DC57A3FA24C10EB800069BA8 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57A3F924C10EB800069BA8 /* MovieDetails.swift */; };
+		DC57A40324C13FC300069BA8 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC57A40224C13FC300069BA8 /* InfoTableViewCell.swift */; };
 		DC746D1024BF1B800043B810 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D0F24BF1B800043B810 /* MovieDetailsViewController.swift */; };
 		DC7EF69B24B5D25200546BB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EF69A24B5D25200546BB9 /* AppDelegate.swift */; };
 		DC7EF69D24B5D25200546BB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7EF69C24B5D25200546BB9 /* SceneDelegate.swift */; };
@@ -33,9 +33,9 @@
 		DC1D295624C00D86003EF45F /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		DC1D295824C00F34003EF45F /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		DC1D295A24C01253003EF45F /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		DC1D295C24C0133D003EF45F /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DC35401824BF25150000ABC7 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		DC57A3F924C10EB800069BA8 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
+		DC57A40224C13FC300069BA8 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DC746D0F24BF1B800043B810 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		DC7EF69724B5D25200546BB9 /* OneLab-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OneLab-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7EF69A24B5D25200546BB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +113,8 @@
 			children = (
 				DC1D295824C00F34003EF45F /* CellConfigurator.swift */,
 				DC1D295624C00D86003EF45F /* ConfigurableCell.swift */,
-				DC1D295C24C0133D003EF45F /* InfoTableViewCell.swift */,
 				DC1D295A24C01253003EF45F /* ImageTableViewCell.swift */,
+				DC57A40224C13FC300069BA8 /* InfoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,7 +335,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1D295D24C0133D003EF45F /* InfoTableViewCell.swift in Sources */,
 				DC57A3FA24C10EB800069BA8 /* MovieDetails.swift in Sources */,
 				DC1D295924C00F34003EF45F /* CellConfigurator.swift in Sources */,
 				DC7EF6B324B712EE00546BB9 /* MovieService.swift in Sources */,
@@ -347,6 +346,7 @@
 				DC7EF6B124B626B100546BB9 /* Movie.swift in Sources */,
 				DC1D295B24C01253003EF45F /* ImageTableViewCell.swift in Sources */,
 				DC746D1024BF1B800043B810 /* MovieDetailsViewController.swift in Sources */,
+				DC57A40324C13FC300069BA8 /* InfoTableViewCell.swift in Sources */,
 				DC35401924BF25150000ABC7 /* MovieDetailViewModel.swift in Sources */,
 				DC1D295724C00D86003EF45F /* ConfigurableCell.swift in Sources */,
 			);

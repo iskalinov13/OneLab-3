@@ -41,20 +41,42 @@ class MovieDetailViewModel {
     }
     
     func fetchPosterImage() {
-        movieService.getMovieImage(path: movie.posterPath, success: { [weak self] (image) in
-            self?.posterImage = image
-            self?.updatePosterImage?()
-            }, failure: { (error) in
-                print("Error while requestion a movie poster image with message \(error)")
-        })
+        if let path = movie.posterPath {
+            movieService.getMovieImage(path: path, success: { [weak self] (image) in
+                self?.posterImage = image
+                self?.updatePosterImage?()
+                }, failure: { (error) in
+                    print("Error while requestion a movie poster image with message \(error)")
+            })
+        } else {
+            posterImage = UIImage(named: "placeholder")
+            updatePosterImage?()
+        }
+        
     }
     
     func fetchBackDropImage() {
-        movieService.getMovieImage(path: movie.backdropPath, success: { [weak self] (image) in
-            self?.backDropImage = image
-            self?.updateBackdropImage?()
-            }, failure: { (error) in
-                print("Error while requestion a movie backdrop image with message \(error)")
-        })
+        if let path = movie.backdropPath {
+            movieService.getMovieImage(path: path, success: { [weak self] (image) in
+                self?.backDropImage = image
+                self?.updateBackdropImage?()
+                }, failure: { (error) in
+                    print("Error while requestion a movie backdrop image with message \(error)")
+            })
+        } else {
+            if let path = movie.posterPath {
+                movieService.getMovieImage(path: path, success: { [weak self] (image) in
+                    self?.backDropImage = image
+                    self?.updateBackdropImage?()
+                    }, failure: { (error) in
+                        print("Error while requestion a movie backdrop image with message \(error)")
+                })
+            } else {
+                backDropImage = UIImage(named: "placeholder")
+                updatePosterImage?()
+            }
+            
+        }
+
     }
 }

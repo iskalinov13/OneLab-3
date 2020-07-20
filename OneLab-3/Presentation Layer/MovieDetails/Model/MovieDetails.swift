@@ -9,8 +9,8 @@
 import Foundation
 
 struct MovieDetails: Decodable {
-    let backDropPath: String
-    let posterPath: String
+    let backDropPath: String?
+    let posterPath: String?
     let overview: String
     let title: String
     let tagline: String

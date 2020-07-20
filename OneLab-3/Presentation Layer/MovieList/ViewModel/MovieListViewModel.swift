@@ -16,6 +16,7 @@ class MovieListViewModel {
     var currentPage = 1
     var isRequestPerforming = false
     var didLoadTableItems: (() -> Void)?
+    var didStopAnimating: (() -> Void)?
     
     init(movieService: MovieService) {
         self.movieService = movieService
@@ -24,16 +25,23 @@ class MovieListViewModel {
     func fetchPopularMovies() {
         
         isRequestPerforming = true
+        
         movieService.getPopularMovies(page: currentPage, success: { [weak self] (movie, image) in
-            self?.currentPage += 1
-            self?.isRequestPerforming = false
-            self?.movies.append(ImageCellConfigurator(item: image))
+            if let image = image {
+                self?.movies.append(ImageCellConfigurator(item: image))
+            } else {
+                self?.movies.append(ImageCellConfigurator(item: UIImage(named: "placeholder")!))
+            }
             self?.movies.append(InfoCellConfigurator(item: movie))
+            
             DispatchQueue.main.async {
                 self?.didLoadTableItems?()
+                self?.didStopAnimating?()
             }
         }, failure: { (error) in
             print("Error while requesting a popular movies, with message \(error)")
         })
+        isRequestPerforming = false
+        currentPage += 1
     }
 }
